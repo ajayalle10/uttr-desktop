@@ -101,8 +101,13 @@ cd uttr-desktop
 npm install
 npm start          # run from source
 npm run dist       # build dist/Uttr-Setup.exe
-npm run release    # build and publish a GitHub release (needs GH_TOKEN)
+npm run release    # build and upload a DRAFT GitHub release (needs GH_TOKEN)
 ```
+
+**Releasing a new version:**
+1. Bump `"version"` in `package.json`, for example `0.1.0` → `0.2.0`, and commit.
+2. Run `npm run release`. This builds the installer and uploads `Uttr-Setup.exe`, `latest.yml` and the `.blockmap` to a draft release tagged `v0.2.0`.
+3. Publish the draft on GitHub (or `gh release edit v0.2.0 --draft=false --latest`). Installed copies pick up the update within a few hours.
 
 ### How it works
 

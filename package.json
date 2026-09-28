@@ -55,7 +55,7 @@
         "provider": "github",
         "owner": "ajayalle10",
         "repo": "uttr-desktop",
-        "releaseType": "release"
+        "releaseType": "draft"
       }
     ]
   },
