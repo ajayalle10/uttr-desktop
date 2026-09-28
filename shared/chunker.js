@@ -1,12 +1,13 @@
 /**
- * Uttr — text chunking (shared)
+ * Uttr — text chunking
  *
- * The same algorithm as the browser extension's content.js: split text into
- * sentence-sized chunks so long passages are read smoothly, with natural
- * pauses. In the desktop app, chunks also make Pause/Resume and the progress
- * line possible.
+ * Splits text into sentence-sized chunks so long passages are read smoothly,
+ * with natural pauses. Chunks also make Pause/Resume and the progress line
+ * possible.
  *
- * Keep this in sync with ../../content.js if the algorithm changes.
+ * It's the same algorithm as the Uttr Chrome Extension's content.js
+ * (github.com/ajayalle10/uttr-chrome-extension). If you improve it here,
+ * consider making the same change there.
  *
  * Works in two places:
  *  - in a window (loaded with <script>), where it creates window.UttrChunker

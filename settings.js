@@ -5,7 +5,7 @@
  *   Windows: C:\Users\<you>\AppData\Roaming\Uttr\settings.json
  *
  * Every feature reads its value from here instead of hard-coding it, so the
- * Settings window (Step 4) only has to change a value and save. For example,
+ * Settings window only has to change a value and save. For example,
  * the activation shortcut is `settings.shortcut`, not a fixed Ctrl+Alt+R.
  */
 

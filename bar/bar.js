@@ -28,7 +28,7 @@ const pauseButton = document.getElementById("pause");
 const stopButton = document.getElementById("stop");
 
 // ---------------------------------------------------------------------------
-// Pronunciation fixes (see Step 1)
+// Pronunciation fixes: words the voices say wrong, respelled so they sound right
 // ---------------------------------------------------------------------------
 
 const PRONUNCIATIONS = [

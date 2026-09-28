@@ -14,7 +14,7 @@
   &nbsp;·&nbsp;
   <a href="#install">How to install</a>
   &nbsp;·&nbsp;
-  <a href="https://github.com/ajayalle10/uttr">Browser extension</a>
+  <a href="https://github.com/ajayalle10/uttr-chrome-extension">Chrome extension</a>
 </p>
 
 <p align="center">
@@ -151,4 +151,4 @@ npm run release    # build and upload a DRAFT GitHub release (needs GH_TOKEN)
 
 **Ajay Alle** · [@ajayalle10](https://github.com/ajayalle10)
 
-Also by Ajay: the **[Uttr browser extension](https://github.com/ajayalle10/uttr)**, which auto-reads selected text in Chrome, Edge and Firefox.
+Also by Ajay: the **[Uttr Chrome Extension](https://github.com/ajayalle10/uttr-chrome-extension)**, which auto-reads selected text in Chrome, Edge and Firefox.
