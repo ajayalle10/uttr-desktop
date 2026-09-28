@@ -1,7 +1,7 @@
 {
   "name": "uttr-desktop",
   "productName": "Uttr",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Select text in any app, press a shortcut, and hear it read aloud.",
   "author": "Ajay Alle",
   "license": "UNLICENSED",

@@ -33,6 +33,11 @@ if (process.env.UTTR_TEST_PROFILE) app.setPath("userData", process.env.UTTR_TEST
 // shortcut links this ID to Uttr's icon. While developing there's no such
 // shortcut, and setting the ID would make Windows fall back to electron.exe's
 // icon on the taskbar. Without it, Windows uses each window's own icon (our logo).
+//
+// Don't override the taskbar icon with win.setAppDetails({ appIconPath }).
+// v0.1.0 did, pointing into app.asar (which Windows can't read): the taskbar
+// showed a blank page, and Windows remembered that blank for this ID. The
+// shortcut's icon (Uttr.exe) is already correct on its own.
 const APP_ID = "com.ajayalle.uttr";
 if (app.isPackaged) app.setAppUserModelId(APP_ID);
 
@@ -310,11 +315,6 @@ function openSettings() {
   });
   settingsWindow.removeMenu(); // no File/Edit/View menu bar
 
-  // The taskbar button in the installed app: tell Windows to use Uttr's name
-  // and logo for it (e.g. when pinned). See APP_ID at the top of this file.
-  if (process.platform === "win32" && app.isPackaged) {
-    settingsWindow.setAppDetails({ appId: APP_ID, appIconPath: ICON_PATH, appIconIndex: 0, relaunchDisplayName: "Uttr" });
-  }
   settingsWindow.loadFile(path.join(__dirname, "settings-window", "settings-window.html"));
   settingsWindow.once("ready-to-show", () => settingsWindow.show());
 
