@@ -1,0 +1,4 @@
+# Installed packages — recreated by "npm install"
+node_modules/
+# Build output (installers)
+dist/

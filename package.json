@@ -1,0 +1,70 @@
+{
+  "name": "uttr-desktop",
+  "productName": "Uttr",
+  "version": "0.1.0",
+  "description": "Select text in any app, press a shortcut, and hear it read aloud.",
+  "author": "Ajay Alle",
+  "license": "UNLICENSED",
+  "private": true,
+  "homepage": "https://github.com/ajayalle10/uttr-desktop",
+  "repository": "github:ajayalle10/uttr-desktop",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win",
+    "release": "electron-builder --win --publish always"
+  },
+  "build": {
+    "appId": "com.ajayalle.uttr",
+    "productName": "Uttr",
+    "copyright": "© 2026 Ajay Alle",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "selection.js",
+      "settings.js",
+      "updater.js",
+      "bar/**",
+      "settings-window/**",
+      "shared/**",
+      "assets/**",
+      "package.json"
+    ],
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "artifactName": "Uttr-Setup.exe",
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Uttr",
+      "uninstallDisplayName": "Uttr",
+      "runAfterFinish": true,
+      "include": "build/installer.nsh"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "ajayalle10",
+        "repo": "uttr-desktop",
+        "releaseType": "release"
+      }
+    ]
+  },
+  "devDependencies": {
+    "electron": "^44.4.5",
+    "electron-builder": "^26.15.3"
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.9",
+    "uiohook-napi": "^1.5.5"
+  }
+}

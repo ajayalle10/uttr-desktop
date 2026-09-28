@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+  Uttr Desktop — Settings window
+  Opened from the tray icon. Changes are saved and applied immediately;
+  there's no "Save" button to forget.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'">
+  <title>Uttr Settings</title>
+  <link rel="stylesheet" href="settings-window.css">
+</head>
+<body>
+  <header>
+    <img src="../assets/icon.png" alt="" width="36" height="36">
+    <div>
+      <h1>Uttr</h1>
+      <p class="tagline">Select text anywhere. Hear it.</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Activation shortcut ===== -->
+    <section>
+      <h2>Activation shortcut</h2>
+      <p class="hint">Select text in any app, then press:</p>
+
+      <div class="shortcut-row">
+        <!-- Shows the shortcut as keycaps. While recording, shows the keys being held.
+             aria-live makes screen readers announce the changes. -->
+        <div id="shortcut" class="keys" aria-live="polite"></div>
+        <button id="change" type="button" class="secondary">Change</button>
+      </div>
+      <p id="shortcut-message" class="message" role="status"></p>
+      <button id="reset-shortcut" type="button" class="link">Reset to default</button>
+    </section>
+
+    <!-- ===== Voice ===== -->
+    <section>
+      <h2>Voice</h2>
+      <div class="voice-row">
+        <select id="voice" aria-label="Voice">
+          <option value="">System default</option>
+        </select>
+        <button id="test-voice" type="button" class="secondary">▶ Test</button>
+      </div>
+    </section>
+
+    <!-- ===== Speed ===== -->
+    <section>
+      <h2>Speed</h2>
+      <div class="field-head">
+        <label for="rate">Reading speed</label>
+        <output id="rate-value" for="rate">1×</output>
+      </div>
+      <input type="range" id="rate" min="0.5" max="2" step="0.05" value="1">
+      <div class="scale"><span>0.5×</span><span>2×</span></div>
+    </section>
+
+    <!-- ===== General ===== -->
+    <section>
+      <h2>General</h2>
+      <label class="toggle-row">
+        <span id="start-label">Start Uttr when Windows starts</span>
+        <input type="checkbox" id="start-with-windows" class="switch">
+      </label>
+    </section>
+  </main>
+
+  <footer>
+    Uttr <span id="version"></span> · Made by Ajay Alle
+  </footer>
+
+  <script src="../shared/shortcut.js"></script>
+  <script src="settings-window.js"></script>
+</body>
+</html>

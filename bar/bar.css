@@ -1,0 +1,200 @@
+/*
+ * Uttr Desktop — floating bar styles
+ *
+ * The bar is always dark (like Wispr's), so it stands out on any wallpaper
+ * or app, in light and dark mode alike. Colours come from the Uttr logo.
+ */
+
+:root {
+  --ink: #1b1a17;
+  --ink-raised: #2a2824; /* hover background for buttons */
+  --cream: #f4f1ea;
+  --muted: #a8a397;
+  --red: #e0492f;
+  --track: #3a3833;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  /* Transparent page: only the pill is visible. The window itself is
+     created with transparent: true in main.js. */
+  background: transparent;
+  overflow: hidden;
+  font: 13px/1.2 system-ui, "Segoe UI", sans-serif;
+  user-select: none; /* it's a control bar, not text to select */
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- The pill ---------- */
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 372px;
+  height: 56px;
+  padding: 0 10px 0 12px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--cream);
+  border: 1px solid var(--track);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+
+  /* Hidden state: slightly lower and transparent. */
+  opacity: 0;
+  transform: translateY(14px) scale(0.97);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* bar.js adds .visible to slide the pill up into view. */
+body.visible .pill {
+  opacity: 1;
+  transform: none;
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* ---------- Sound wave ---------- */
+
+.wave {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.wave span {
+  width: 3px;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--red);
+  transform-origin: center;
+  animation: bounce 0.9s ease-in-out infinite;
+}
+
+/* Each bar starts at a different moment, which makes the wave ripple. */
+.wave span:nth-child(2) { animation-delay: -0.2s; }
+.wave span:nth-child(3) { animation-delay: -0.45s; }
+.wave span:nth-child(4) { animation-delay: -0.1s; }
+.wave span:nth-child(5) { animation-delay: -0.3s; }
+
+@keyframes bounce {
+  0%, 100% { transform: scaleY(0.25); }
+  50%      { transform: scaleY(1); }
+}
+
+/* Paused (or showing a message): freeze the wave low and grey it out. */
+body.paused .wave span,
+body.message .wave span {
+  animation: none; /* stop bouncing, so the transform below applies */
+  transform: scaleY(0.3);
+  background: var(--muted);
+}
+
+/* ---------- Label + progress ---------- */
+
+.info {
+  flex: 1;
+  min-width: 0; /* lets long labels shrink instead of pushing buttons out */
+}
+
+.label {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.progress {
+  height: 3px;
+  margin-top: 6px;
+  border-radius: 2px;
+  background: var(--track);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--red);
+  transition: width 0.3s ease;
+}
+
+/* When showing a message ("Select some text first") there's nothing to
+   control, so hide the progress line and buttons. */
+body.message .progress,
+body.message button {
+  display: none;
+}
+
+/* ---------- Buttons ---------- */
+
+button {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: var(--cream);
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+button:hover {
+  background: var(--ink-raised);
+}
+
+.speed {
+  min-width: 44px;
+  height: 30px;
+  padding: 0 8px;
+  border-radius: 999px;
+  border: 1px solid var(--track);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+.icon-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.stop svg {
+  fill: var(--red);
+}
+
+/* Show the pause icon while reading, the play icon while paused. (The HTML
+   "hidden" attribute doesn't work on SVG elements, so CSS does it.) */
+.play-icon,
+body.paused .pause-icon {
+  display: none;
+}
+
+body.paused .play-icon {
+  display: block;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+  Uttr Desktop — the floating bar
+  A small, frameless, transparent window that floats at the bottom of the
+  screen while Uttr reads. The page background is transparent; only the
+  rounded "pill" is visible.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'">
+  <title>Uttr</title>
+  <link rel="stylesheet" href="bar.css">
+</head>
+<body>
+  <div class="pill" id="pill">
+    <img class="logo" src="../assets/icon.png" alt="">
+
+    <!-- Animated sound wave. Five bars that bounce while reading. -->
+    <div class="wave" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="info">
+      <div class="label" id="label">Reading…</div>
+      <div class="progress"><div class="progress-fill" id="progress"></div></div>
+    </div>
+
+    <button class="speed" id="speed" type="button" title="Change speed" aria-label="Change speed">1.0×</button>
+
+    <button class="icon-btn" id="pause" type="button" title="Pause" aria-label="Pause">
+      <!-- Pause and play icons. CSS shows one or the other, depending on
+           whether <body> has the "paused" class (see bar.css). -->
+      <svg viewBox="0 0 24 24" class="pause-icon"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+      <svg viewBox="0 0 24 24" class="play-icon"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.2-6.5a1 1 0 0 0 0-1.7L9.5 4.6A1 1 0 0 0 8 5.5z"/></svg>
+    </button>
+
+    <button class="icon-btn stop" id="stop" type="button" title="Stop (Esc)" aria-label="Stop">
+      <svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+    </button>
+  </div>
+
+  <script src="../shared/chunker.js"></script>
+  <script src="bar.js"></script>
+</body>
+</html>
