@@ -36,9 +36,12 @@ if (process.env.UTTR_TEST_PROFILE) app.setPath("userData", process.env.UTTR_TEST
 //
 // Don't override the taskbar icon with win.setAppDetails({ appIconPath }).
 // v0.1.0 did, pointing into app.asar (which Windows can't read): the taskbar
-// showed a blank page, and Windows remembered that blank for this ID. The
-// shortcut's icon (Uttr.exe) is already correct on its own.
-const APP_ID = "com.ajayalle.uttr";
+// showed a blank page, and Windows kept that blank icon stored against the
+// old ID "com.ajayalle.uttr" even after fixes and restarts. So since v0.1.2
+// the ID is new. It must match "appId" in package.json, which the installer
+// stamps on the Start-menu shortcut. (package.json also pins nsis.guid to the
+// original installer identity, so updates replace the old install in place.)
+const APP_ID = "com.ajayalle.uttr.desktop";
 if (app.isPackaged) app.setAppUserModelId(APP_ID);
 
 // Size of the bar window. The visible pill is 372x56; the extra room is

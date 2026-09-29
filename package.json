@@ -1,7 +1,7 @@
 {
   "name": "uttr-desktop",
   "productName": "Uttr",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Select text in any app, press a shortcut, and hear it read aloud.",
   "author": "Ajay Alle",
   "license": "UNLICENSED",
@@ -15,7 +15,7 @@
     "release": "electron-builder --win --publish always"
   },
   "build": {
-    "appId": "com.ajayalle.uttr",
+    "appId": "com.ajayalle.uttr.desktop",
     "productName": "Uttr",
     "copyright": "© 2026 Ajay Alle",
     "directories": {
@@ -38,6 +38,7 @@
       "icon": "assets/icon.ico"
     },
     "nsis": {
+      "guid": "a014660e-5588-581f-b3b9-88de461bfe0a",
       "oneClick": true,
       "perMachine": false,
       "artifactName": "Uttr-Setup.exe",
